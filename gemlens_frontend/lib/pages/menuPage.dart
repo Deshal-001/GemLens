@@ -19,7 +19,7 @@ class _MenuPageState extends State<MenuPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CustomBottomNavigationBar(index: 0,),
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         leading: Icon(Icons.menu),
         backgroundColor: Colors.transparent,

@@ -3,6 +3,7 @@ import 'package:gemlens_frontend/pages/aboutPage.dart';
 import 'package:gemlens_frontend/pages/gemStoneSearch.dart';
 import 'package:gemlens_frontend/pages/helpAndSupportPage.dart';
 import 'package:gemlens_frontend/pages/settingsPage.dart';
+import 'package:gemlens_frontend/themes/theme.dart';
 
 import 'pages/landingPage.dart';
 import 'pages/menuPage.dart';
@@ -18,11 +19,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-        
-      ),
+      theme: lightTheme,
+      darkTheme: darkTheme,
       home: const LandingPage(),
       routes: {
         '/landing': (context) => const LandingPage(),
