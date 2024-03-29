@@ -16,31 +16,34 @@ class HelpWidget extends StatelessWidget {
       padding: const EdgeInsets.all(5.0),
       child: Container(
         width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
         margin: EdgeInsets.symmetric(horizontal: 5.0),
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
         ),
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Image.asset(imgList[i]),
-            ),
-            Text(
-              titleList[i],
-              style: redTitleFont,
-            ),
-            SizedBox(height: 10),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                descList[i],
-                style: redBodyMultilineText,
-                textAlign: TextAlign.justify,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Image.asset(imgList[i], width: MediaQuery.of(context).size.width*0.3 ,height: MediaQuery.of(context).size.width*0.3),
               ),
-            ),
-          ],
+              Text(
+                titleList[i],
+                style: redTitleFont,
+              ),
+              SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Text(
+                  descList[i],
+                  style: redBodyMultilineText,
+                  textAlign: TextAlign.justify,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

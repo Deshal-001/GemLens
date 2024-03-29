@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gemlens_frontend/pages/aboutPage.dart';
 import 'package:gemlens_frontend/pages/gemStoneSearch.dart';
 import 'package:gemlens_frontend/pages/helpAndSupportPage.dart';
+import 'package:gemlens_frontend/pages/scanGemStonePage.dart';
 import 'package:gemlens_frontend/pages/settingsPage.dart';
 import 'package:gemlens_frontend/themes/theme.dart';
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         '/about': (context) => const AboutPage(),
         '/settings': (context) => const SettingsPage(),
         '/help': (context) => const HelpAndSupportPage(),
+        '/scan':(context) => const ScanImagePage(),
         
         },
         

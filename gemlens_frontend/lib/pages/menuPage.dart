@@ -63,7 +63,7 @@ class _MenuPageState extends State<MenuPage> {
                 MenuButton(
                   text: "Scan Gemstones",
                   onTap: () {
-                    Navigator.pushNamed(context, '/landing');
+                    Navigator.pushNamed(context, '/scan');
                   },
                   icon: Icons.camera_alt,
                 ),
