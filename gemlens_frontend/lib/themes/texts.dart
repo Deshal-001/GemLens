@@ -20,3 +20,18 @@ final List<String> descList = [
   'Need help? Fill out the form below, and our support team will get back to you as soon as possible to assist you with your issue.',
   'Your issue has been successfully resolved! Thank you for reaching out to us. If you have any further questions or concerns, feel free to contact us again.',
 ];
+
+final List<String> gemStonesList = [
+  'Amethyst',
+  'Ametrine',
+  'Black Spinel',
+  'Blue Sapphire',
+  'Citrine',
+  'Diamond',
+  'Emerald',
+  'Pearl',
+  'Peridot',
+  'Rose Quartz',
+  'Ruby',
+  'Smoky Quartz',
+];

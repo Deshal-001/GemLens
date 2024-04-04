@@ -27,7 +27,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
         if (index == 0) {
           Navigator.pushNamed(context, '/menu');
         } else if (index == 1) {
-          Navigator.pushNamed(context, '/landing');
+          Navigator.pushNamed(context, '/scan');
         } else if (index == 2) {
           Navigator.pushNamed(context, '/search');
         }

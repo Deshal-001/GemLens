@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gemlens_frontend/components/bottomNavigationBar.dart';
+import 'package:gemlens_frontend/components/gemStone.dart';
 import 'package:gemlens_frontend/components/gemstoneList.dart';
 import 'package:gemlens_frontend/themes/colors.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GemStoneSearchPage extends StatefulWidget {
-  const GemStoneSearchPage({super.key});
+  const GemStoneSearchPage({Key? key}) : super(key: key);
 
   @override
   State<GemStoneSearchPage> createState() => _GemStoneSearchPageState();
@@ -14,29 +15,35 @@ class GemStoneSearchPage extends StatefulWidget {
 class _GemStoneSearchPageState extends State<GemStoneSearchPage> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      bottomNavigationBar:const CustomBottomNavigationBar(index: 2,),
-      body:  Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-            Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            child: Row(
-              children: [
-                
-                Spacer(),
-                Icon(Icons.search, color: Colors.red, size: 40,),
-              ],
-            ),
-            
-          ),
-
-          GemStoneList(),
-          GemStoneList(),
-          
-        ],
+  return Scaffold(
+    bottomNavigationBar: const CustomBottomNavigationBar(index: 2),
+    appBar: AppBar(
+      leading: Icon(Icons.menu),
+      backgroundColor: Colors.transparent,
+      elevation: 0,
+      title: Text(
+        "GemLens",
+        style: GoogleFonts.dmSerifDisplay(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: Color.fromRGBO(216, 23, 23, 0.78),
+        ),
       ),
-    );
-  }
+    ),
+    body: Column(
+      children: [
+        Expanded(
+          child: SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
+              children: gemstones.map((gemstone) {
+                return GemStoneList(gemstone: gemstone);
+              }).toList(),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
 }
-
+}
