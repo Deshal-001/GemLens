@@ -20,23 +20,21 @@ class _HelpAndSupportPageState extends State<HelpAndSupportPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.menu),
-        backgroundColor: primaryColor,
+     //   backgroundColor: Colors.white, // Changed AppBar color to white
         elevation: 0,
         title: Text(
-          "Help and Support",
+          "Help & Support",
           style: GoogleFonts.dmSerifDisplay(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Colors.white,
+            color: Colors.black, // Changed text color to black
           ),
         ),
       ),
-      bottomNavigationBar: const CustomBottomNavigationBar(
-        index: 0,
-      ),
+      //bottomNavigationBar: const CustomBottomNavigationBar(
+      //  index: 0,
+      //),
       body: Container(
-        decoration: backgroundStyle2,
         child: Padding(
           padding: const EdgeInsets.all(5.0),
           child: Column(

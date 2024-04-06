@@ -4,6 +4,7 @@ import 'package:gemlens_frontend/themes/colors.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int index;
+  
   const CustomBottomNavigationBar({
     super.key,
     required this.index,
@@ -12,27 +13,32 @@ class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CurvedNavigationBar(
+      height: 60,
       backgroundColor: Colors.transparent,
-      color: primaryColor,
+      color: Colors.blueGrey,
+      buttonBackgroundColor: Colors.white,
       animationDuration: const Duration(milliseconds: 300),
       index: index == null ? 0 : index,     
       items: const <Widget>[
-        Icon(Icons.home, color: Colors.white,),
-        Icon(Icons.camera, color: Colors.white,),
-        Icon(Icons.search,color: Colors.white,),
-        
+        Icon(Icons.home, color: Colors.black,),
+        Icon(Icons.camera, color: Colors.black,),
+        Icon(Icons.search,color: Colors.black,),
+       
       ],
       onTap: (index) {
         //Handle button tap
-        if (index == 0) {
-          Navigator.pushNamed(context, '/menu');
-        } else if (index == 1) {
-          Navigator.pushNamed(context, '/scan');
-        } else if (index == 2) {
-          Navigator.pushNamed(context, '/search');
+        switch(index) {
+          case 0:
+            Navigator.pushNamed(context, '/menu');
+            break;
+          case 1:
+            Navigator.pushNamed(context, '/scan');
+            break;
+          case 2:
+            Navigator.pushNamed(context, '/search');
+            break;
+         
         }
-        
-    
       },
     );
   }

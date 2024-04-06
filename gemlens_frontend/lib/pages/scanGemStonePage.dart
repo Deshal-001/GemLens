@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gemlens_frontend/components/bottomNavigationBar.dart';
 import 'package:gemlens_frontend/themes/colors.dart';
 import 'package:gemlens_frontend/themes/texts.dart';
@@ -37,121 +38,168 @@ class _MyWidgetState extends State<ScanImagePage> {
   Uint8List? xaiImage;
   bool isLoadingXAI = false;
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(index: 1),
-      appBar: AppBar(
-        leading: Icon(Icons.menu),
-        backgroundColor: Colors.transparent,
+     // bottomNavigationBar: CustomBottomNavigationBar(index: 1),
+      appBar:  AppBar(
+       // backgroundColor: Colors.white, // Changed AppBar color to white
         elevation: 0,
         title: Text(
           "Scan",
           style: GoogleFonts.dmSerifDisplay(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Color.fromRGBO(216, 23, 23, 0.78),
+            color: Colors.black, // Changed text color to black
           ),
         ),
       ),
-      body: Container(
-        decoration: backgroundStyle,
-        child: Center(
-          child: SingleChildScrollView(
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  if (webImage != null || selectedImage != null)
-                    Card(
-                      elevation: 8.0,
-                      margin: const EdgeInsets.all(16.0),
-                      color: Colors.white,
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: webImage != null
-                                ? Image.memory(webImage!, fit: BoxFit.cover)
-                                : Image.file(selectedImage!, fit: BoxFit.cover),
-                          ),
-                          ListTile(
-                            title: Text('Predicted Class: $predictedClass'),
-                            subtitle: Text('Confidence: ${confidenceScore != null ? (confidenceScore! * 100).toStringAsFixed(2) : "N/A"}%'),
-                          ),
-                          ExpansionTile(
-                            title: const Text('Explanation & XAI Image'),
-                            children: [
-                              ListTile(
-                                title: Text(interpretDescription(predictedClass: predictedClass, dominantColor: dominantColor, confidenceScore: confidenceScore)),
+      body: SafeArea(
+        child: Container(
+          child: Center(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    if (webImage != null || selectedImage != null)
+                      Card(
+                        elevation: 8.0,
+                        color: primaryColor.withOpacity(0.9),
+                        child: Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: webImage != null
+                                  ? Image.memory(webImage!, fit: BoxFit.cover)
+                                  : Image.file(selectedImage!, fit: BoxFit.cover),
+                            ),
+                            ListTile(
+                              title: Text(
+                                'Predicted Class: $predictedClass',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
-                              if (isLoadingXAI)
-                                const Padding(
-                                  padding: EdgeInsets.all(20),
-                                  child: CircularProgressIndicator(),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Confidence: ${confidenceScore != null ? (confidenceScore! * 100).toStringAsFixed(2) : "N/A"}%',
+                                    style: TextStyle(
+                                      color: Colors.grey[700],
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                  if (confidenceScore != null)
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 8.0),
+                                      child: SizedBox(
+                                        height: 5,
+                                        child: LinearProgressIndicator(
+                                          value: confidenceScore,
+                                          backgroundColor: Colors.grey[200],
+                                          valueColor:
+                                              AlwaysStoppedAnimation<Color>(
+                                                  primaryColor),
+                                        ),
+                                      ),
+                                    ),
+                                ],
+                              ),
+                            ),
+                            ExpansionTile(
+                              title: const Text('Explanation & XAI Image'),
+                              children: [
+                                ListTile(
+                                  title: Text(interpretDescription(
+                                      predictedClass: predictedClass,
+                                      dominantColor: dominantColor,
+                                      confidenceScore: confidenceScore)),
                                 ),
-                              if (xaiImage != null)
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Image.memory(xaiImage!, fit: BoxFit.cover),
-                                ),
-                            ],
-                          ),
-                        ],
+                                if (isLoadingXAI)
+                                   Padding(
+                                    padding: EdgeInsets.all(20),
+                                    child: CircularProgressIndicator(
+                                        color: primaryColor),
+                                  ),
+                                if (xaiImage != null)
+                                  Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: Image.memory(xaiImage!,
+                                        fit: BoxFit.cover),
+                                  ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  if (webImage == null && selectedImage == null)
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: DottedBorder(
-                        borderType: BorderType.RRect,
-                        radius: const Radius.circular(12),
-                        padding: const EdgeInsets.all(6),
-                        dashPattern: [8, 4],
-                        child: Container(
-                          width: 300,
-                          height: 200,
-                          alignment: Alignment.center,
-                          child: const Text('No image selected'),
+                    if (webImage == null && selectedImage == null)
+                      Container(
+                        width: 300,
+                        height: 200,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.grey,
+                              style: BorderStyle.solid,
+                              width: 1),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Text('No image selected'),
+                      ),
+                    const SizedBox(height: 20),
+                    ElevatedButton.icon(
+                      onPressed: () => _showUploadImageOptions(context),
+                      label: const Text('Upload Image'),
+                      icon: const Icon(Icons.cloud_upload),
+                      style: ElevatedButton.styleFrom(
+                        foregroundColor: Colors.white,
+                        backgroundColor: primaryColor,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(32.0),
                         ),
                       ),
                     ),
-                  const SizedBox(height: 20),
-                  FloatingActionButton.extended(
-                    onPressed:()=> _showUploadImageOptions(context),
-                    label: const Text('Upload Image'),
-                    icon: const Icon(Icons.cloud_upload),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
         ),
       ),
     );
-  
   }
-  
-  
 
-  String interpretDescription({String? predictedClass, String? dominantColor, double? confidenceScore}) {
-  // Ensure all parameters are available to form a meaningful description
-  if (predictedClass != null && dominantColor != null && confidenceScore != null) {
-    // Convert confidence score to a percentage for readability
-    final confidencePercentage = (confidenceScore * 100).toStringAsFixed(2);
+  String interpretDescription(
+      {String? predictedClass,
+      String? dominantColor,
+      double? confidenceScore}) {
+    // Ensure all parameters are available to form a meaningful description
+    if (predictedClass != null &&
+        dominantColor != null &&
+        confidenceScore != null) {
+      // Convert confidence score to a percentage for readability
+      final confidencePercentage = (confidenceScore * 100).toStringAsFixed(2);
 
-    // Craft the description
-    String description = "The model predicts the class as '$predictedClass' with a confidence level of $confidencePercentage%. ";
-    description += "A significant factor contributing to this prediction is the dominant color '$dominantColor', ";
-    description += "which is commonly associated with the '$predictedClass' class.";
+      // Craft the description
+      String description =
+          "The model predicts the class as '$predictedClass' with a confidence level of $confidencePercentage%. ";
+      description +=
+          "A significant factor contributing to this prediction is the dominant color '$dominantColor', ";
+      description +=
+          "which is commonly associated with the '$predictedClass' class.";
 
-    return description;
-  } else {
-    // Return a default message if any of the information is missing
-    return "Awaiting more data for a comprehensive analysis.";
+      return description;
+    } else {
+      // Return a default message if any of the information is missing
+      return "Awaiting more data for a comprehensive analysis.";
+    }
   }
-}
 
   void _showUploadImageOptions(BuildContext context) {
     if (kIsWeb) {

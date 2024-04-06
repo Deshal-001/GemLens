@@ -16,17 +16,16 @@ class _GemStoneSearchPageState extends State<GemStoneSearchPage> {
   @override
   Widget build(BuildContext context) {
   return Scaffold(
-    bottomNavigationBar: const CustomBottomNavigationBar(index: 2),
+   // bottomNavigationBar: const CustomBottomNavigationBar(index: 2),
     appBar: AppBar(
-      leading: Icon(Icons.menu),
       backgroundColor: Colors.transparent,
       elevation: 0,
       title: Text(
-        "GemLens",
+        "Gem Details",
         style: GoogleFonts.dmSerifDisplay(
           fontSize: 20,
           fontWeight: FontWeight.bold,
-          color: Color.fromRGBO(216, 23, 23, 0.78),
+          color: primaryColor,
         ),
       ),
     ),

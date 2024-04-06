@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:gemlens_frontend/components/gemStone.dart';
 import 'package:gemlens_frontend/pages/gemStoneSearch.dart';
 import 'package:gemlens_frontend/pages/gemstonePage.dart';
@@ -26,9 +27,15 @@ class GemStoneList extends StatelessWidget {
       },
       child: Padding(
         padding: const EdgeInsets.all(4.0),
-        child: Container(
+        child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15),
+          ),
+          elevation: 8,
+          child: Container(
+         
           decoration: BoxDecoration(
-            color: primaryColor.withOpacity(.2),
+            //color: primaryColor.withOpacity(.2),
             borderRadius: BorderRadius.circular(10),
           ),
           height: 80.0,
@@ -68,7 +75,7 @@ class GemStoneList extends StatelessWidget {
                         Text(gemstone.category), // replace with actual category
                         Text(
                           gemstone.name,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
                             color: Colors.black,
@@ -83,6 +90,7 @@ class GemStoneList extends StatelessWidget {
           ),
         ),
       ),
+    ),
     );
   }
 }

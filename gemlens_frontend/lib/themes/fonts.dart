@@ -13,10 +13,10 @@ var redTitleFont = GoogleFonts.dmSerifDisplay(
   color: Color.fromARGB(197, 106, 8, 8),
 );
 
-var redBodyFont = GoogleFonts.dmSerifDisplay(
+var blueBodyFont = GoogleFonts.dmSerifDisplay(
   fontSize: 20,
   fontWeight: FontWeight.bold,
-  color: Color.fromARGB(197, 106, 8, 8),
+  color: Color.fromARGB(197, 4, 11, 86),
 );
 
 var whiteBodyFont = GoogleFonts.dmSerifDisplay(

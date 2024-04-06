@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-var primaryColor = const Color.fromARGB(255, 156, 15, 15).withOpacity(0.9);
+var primaryColor = Color.fromARGB(255, 57, 57, 157); // Deep Sky Blue
 
 var backgroundStyle = BoxDecoration(
   gradient: LinearGradient(
@@ -8,29 +8,10 @@ var backgroundStyle = BoxDecoration(
     end: Alignment.bottomCenter,
     colors: [
       primaryColor,
-      primaryColor,
-      Color.fromARGB(255, 246, 73, 73),
-      Color.fromARGB(255, 246, 73, 73),
-      Color.fromARGB(255, 246, 73, 73),
-      Colors.white,
-    ],
-  ),
-);
-
-var backgroundStyle2 = BoxDecoration(
-  gradient: LinearGradient(
-    begin: Alignment.topCenter,
-    end: Alignment.bottomCenter,
-    colors: [
-      primaryColor,
-            primaryColor,
-
-      Color.fromARGB(255, 246, 73, 73),
-            Color.fromARGB(255, 246, 73, 73),
-            
-
-      Colors.white70,
-      
+      Color(0xFF1E90FF), // Dodger Blue
+      Color(0xFF4169E1), // Royal Blue
+      Color(0xFF0000CD), // Medium Blue
+      Color(0xFF00008B), // Dark Blue
     ],
   ),
 );

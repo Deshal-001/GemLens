@@ -11,7 +11,8 @@ class LandingPageButton extends StatelessWidget {
       onTap:onTap ,
       child: Container(
         decoration: BoxDecoration(
-          color: Color.fromRGBO(216, 23, 23, 0.78),
+          color:                        const Color.fromARGB(255, 3, 66, 117)
+,
           borderRadius: BorderRadius.circular(60)
         ),
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
