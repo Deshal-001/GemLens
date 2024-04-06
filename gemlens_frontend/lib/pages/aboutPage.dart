@@ -113,7 +113,7 @@ class AboutBlock extends StatelessWidget {
           SizedBox(height: 20),
           ClipOval(
             child: Image.asset(
-              '/assets/icons/mobileIcon.png',
+              'assets/icons/mobileIcon.png',
               fit: BoxFit.cover,
               width: 180,
               height: 180,
