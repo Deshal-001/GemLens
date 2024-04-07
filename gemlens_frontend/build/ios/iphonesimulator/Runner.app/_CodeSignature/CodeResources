@@ -46,7 +46,7 @@
 		</data>
 		<key>Frameworks/App.framework/App</key>
 		<data>
-		abMLozyXpGfhPpXQVhsyXHiV6xc=
+		xbyZdk8hISOVs8h6o85P8dOE6Ms=
 		</data>
 		<key>Frameworks/App.framework/Info.plist</key>
 		<data>
@@ -54,7 +54,7 @@
 		</data>
 		<key>Frameworks/App.framework/_CodeSignature/CodeResources</key>
 		<data>
-		SOh5wl9qfubdsYbvO+g/9VFUiNE=
+		zpgyLmLwwm4TAV0TWdZBMV/vBzA=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/NOTICES.Z</key>
 		<data>
-		S6Tyxq0v+dgZNjfAgCAPPhpMDw4=
+		LKG4K3I45CLPPXJPHX5N378wz70=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/assets/icons/Citrine-icon.png</key>
 		<data>
@@ -270,7 +270,7 @@
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/kernel_blob.bin</key>
 		<data>
-		AZ5ilLVPkYrUQx6fAYWPSFRBvd8=
+		/UQ5YZlue5kRvVSQUwIvfo7DEH8=
 		</data>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
 		<data>
@@ -446,7 +446,27 @@
 		</data>
 		<key>Frameworks/rive_common.framework/rive_common</key>
 		<data>
-		Sme9SDHveKDXEF48GwTiAfYeoks=
+		Kn3SCtzg+2fBKnVjEAVFvg2QW2Q=
+		</data>
+		<key>Frameworks/url_launcher_ios.framework/Info.plist</key>
+		<data>
+		xHnMabIz3rXSbBhOVtLRqeigTG8=
+		</data>
+		<key>Frameworks/url_launcher_ios.framework/_CodeSignature/CodeResources</key>
+		<data>
+		zpPKAV+Me3KqinABgsJoqkvQzss=
+		</data>
+		<key>Frameworks/url_launcher_ios.framework/url_launcher_ios</key>
+		<data>
+		AFdHVqw/ATpgmRVuO2fe1dEIXjI=
+		</data>
+		<key>Frameworks/url_launcher_ios.framework/url_launcher_ios_privacy.bundle/Info.plist</key>
+		<data>
+		Hmay9J/0xCZ2B4T2U58qjfWJ2LQ=
+		</data>
+		<key>Frameworks/url_launcher_ios.framework/url_launcher_ios_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		/LX0ZlwxwIAIhjZaDB8EiH5KpXA=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -533,7 +553,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			3CrUZ9yZdd1EDjx+DvTyL73S6JGbipaxKpXWfsMYnsQ=
+			Z9FHMQNSJaz8Jme0aGsO+6ytoIkrwcB0h87fip9DP8I=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/Info.plist</key>
@@ -547,7 +567,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			k2nMVZKEswmYWmzj02a17lundDAjpBqN0TPR/DCt2E0=
+			5rwVJ5oScUHhd1oy3rGedPq61iMTmmiHzwZcGOsd6EE=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/AssetManifest.bin</key>
@@ -575,7 +595,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ozUMz9KJHttjqNcP5Je9OrY00Ika8gwFhTsZUFjqoMo=
+			ZrHBgRquh+x/f+SgbwBaD54iQlrqIVinm+rHdq6aPTY=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/assets/icons/Citrine-icon.png</key>
@@ -925,7 +945,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			stIhwMaA/8WbsjE+eIpkXcEF/VmGIAmRgXQtDdSMwpo=
+			K+qR6DBqInEmDiyel8Z60XxJtOOay8ru8wbUMYmwndw=
 			</data>
 		</dict>
 		<key>Frameworks/App.framework/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf</key>
@@ -1233,7 +1253,42 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			q+3lx5vzn4vYeJ8sOQ5zLoLchKSq64Z0EggAxeGXm8E=
+			Qx8Ht/cb3sBaJkMppTScFj2OD476Akt8Fl7g8VAYaj4=
+			</data>
+		</dict>
+		<key>Frameworks/url_launcher_ios.framework/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			DLGavsKudlcy3bc3m/tHkJW+57d3gll4YVszghPR7b4=
+			</data>
+		</dict>
+		<key>Frameworks/url_launcher_ios.framework/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			7lqaQ4nlXuf9l9Xo1wIRu5Bt+klVk8UfRjpdT4lLtbI=
+			</data>
+		</dict>
+		<key>Frameworks/url_launcher_ios.framework/url_launcher_ios</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			G9M7zhTzgD/tXs7FyYzsWo30l2RZqZpyC7EukRMZu/s=
+			</data>
+		</dict>
+		<key>Frameworks/url_launcher_ios.framework/url_launcher_ios_privacy.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			lmQSpMCzpXrfvjl1UI9lXVOIw7KcYusGf9dc7LF8UrA=
+			</data>
+		</dict>
+		<key>Frameworks/url_launcher_ios.framework/url_launcher_ios_privacy.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			bS2g2NkwIn1CjB2TY7CtbjoS4sm2jFzilxWKdBL8jDE=
 			</data>
 		</dict>
 	</dict>

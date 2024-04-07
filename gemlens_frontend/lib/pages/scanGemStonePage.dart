@@ -1,12 +1,8 @@
 import 'dart:convert';
 //import 'dart:ffi';
 import 'dart:io';
-import 'dart:typed_data';
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:gemlens_frontend/components/bottomNavigationBar.dart';
 import 'package:gemlens_frontend/themes/colors.dart';
 import 'package:gemlens_frontend/themes/texts.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,7 +11,6 @@ import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 import 'package:async/async.dart';
 
-import '../components/scanButton.dart';
 
 class ScanImagePage extends StatefulWidget {
   const ScanImagePage({Key? key}) : super(key: key);
@@ -79,7 +74,7 @@ class _MyWidgetState extends State<ScanImagePage> {
                               title: Text(
                                 'Predicted Class: $predictedClass',
                                 style: TextStyle(
-                                  color: Colors.black,
+                                  color: Colors.white,
                                   fontSize: 18,
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -90,7 +85,7 @@ class _MyWidgetState extends State<ScanImagePage> {
                                   Text(
                                     'Confidence: ${confidenceScore != null ? (confidenceScore! * 100).toStringAsFixed(2) : "N/A"}%',
                                     style: TextStyle(
-                                      color: Colors.grey[700],
+                                      color: Colors.white,
                                       fontSize: 16,
                                     ),
                                   ),
@@ -113,9 +108,11 @@ class _MyWidgetState extends State<ScanImagePage> {
                               ),
                             ),
                             ExpansionTile(
-                              title: const Text('Explanation & XAI Image'),
+                              title: const Text('Explanation & XAI Image',),
+                              textColor: Colors.white,
                               children: [
                                 ListTile(
+                                  textColor: Colors.white,
                                   title: Text(interpretDescription(
                                       predictedClass: predictedClass,
                                       dominantColor: dominantColor,
@@ -356,53 +353,6 @@ class _MyWidgetState extends State<ScanImagePage> {
     }
   }
 
-  Future<void> _uploadImage_probabilities(
-      Uint8List data, String filename) async {
-    var uri = Uri.parse("http://127.0.0.1:5000/predict_probabilities");
-    var request = http.MultipartRequest("POST", uri);
-    request.files.add(http.MultipartFile.fromBytes(
-      'image',
-      data,
-      filename: filename,
-    ));
-
-    var response = await request.send();
-    if (response.statusCode == 200) {
-      String responseBody = await response.stream.bytesToString();
-      print("Response from the server: $responseBody");
-      setState(() {
-        responses.add(responseBody); // Add the response to the list
-      });
-    } else {
-      print('Failed to upload image: ${response.statusCode}');
-    }
-  }
-
-  Future<void> _uploadImage_dominantColor(
-      Uint8List data, String filename) async {
-    var uri = Uri.parse(
-        "http://127.0.0.1:5000/predict_class"); // Update with the correct endpoint
-    var request = http.MultipartRequest("POST", uri);
-    request.files.add(http.MultipartFile.fromBytes(
-      'image', // Ensure this matches the key expected by Flask
-      data,
-      filename: filename,
-    ));
-
-    var response = await request.send();
-    if (response.statusCode == 200) {
-      String responseBody = await response.stream.bytesToString();
-      print("Response from the server: $responseBody");
-      setState(() {
-        apiResponse = responseBody;
-        gemStoneIndex = int.parse(apiResponse!.replaceAll('"', ''));
-        predictedClass = gemStonesList[
-            gemStoneIndex!]; // Update your UI based on the response
-      });
-    } else {
-      print('Failed to upload image: ${response.statusCode}');
-    }
-  }
 
   Future<void> _uploadImage_getDetails(Uint8List data, String filename) async {
     var uri = Uri.parse("http://127.0.0.1:5000/image_analysis");

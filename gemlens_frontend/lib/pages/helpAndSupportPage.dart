@@ -5,8 +5,7 @@ import 'package:gemlens_frontend/components/helpWidget.dart';
 import 'package:gemlens_frontend/themes/colors.dart';
 import 'package:gemlens_frontend/themes/fonts.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-
+import 'package:url_launcher/url_launcher.dart';
 
 class HelpAndSupportPage extends StatefulWidget {
   const HelpAndSupportPage({super.key});
@@ -16,11 +15,12 @@ class HelpAndSupportPage extends StatefulWidget {
 }
 
 class _HelpAndSupportPageState extends State<HelpAndSupportPage> {
+  final emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-     //   backgroundColor: Colors.white, // Changed AppBar color to white
+        //   backgroundColor: Colors.white, // Changed AppBar color to white
         elevation: 0,
         title: Text(
           "Help & Support",
@@ -50,6 +50,53 @@ class _HelpAndSupportPageState extends State<HelpAndSupportPage> {
                       height: 500,
                     )),
               ),
+              ElevatedButton(
+  onPressed: () {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Feedback Form'),
+          content: Column(
+            children: <Widget>[
+              TextField(
+                decoration: InputDecoration(hintText: "Email"),
+              ),
+              TextField(
+                decoration: InputDecoration(hintText: "Subject"),
+              ),
+              TextField(
+                decoration: InputDecoration(hintText: "Message"),
+                maxLines: 3,
+                controller: emailController,
+              ),
+            ],
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Submit'),
+              onPressed: () {
+                              sendFeedbackEmail(emailBody: emailController);
+
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  },
+  child: Text('Submit Feedback'),
+  style: ElevatedButton.styleFrom(
+    foregroundColor: Colors.white, backgroundColor: primaryColor, // text color
+  ),
+)
             ],
           ),
         ),
@@ -57,5 +104,18 @@ class _HelpAndSupportPageState extends State<HelpAndSupportPage> {
     );
   }
 
-}
+ sendFeedbackEmail({required TextEditingController emailBody}) async {
+  final Uri params = Uri(
+    scheme: 'mailto',
+    path: 'kavindudeshal2@gmail.com',
+    query: 'subject=App Feedback&body=${Uri.encodeComponent(emailBody.text)}',
+  );
 
+  String url = params.toString();
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    print('Could not launch $url');
+  }
+}
+}

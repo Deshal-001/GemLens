@@ -29,6 +29,8 @@ dependencies:
   salomon_bottom_bar: ^3.3.2
   floating_bottom_navigation_bar: ^1.5.2
   flutter_neumorphic: ^3.2.0
+  url_launcher: ^6.2.5
+  dashed_circular_progress_bar: ^0.0.6
 
 dev_dependencies:
   flutter_test:

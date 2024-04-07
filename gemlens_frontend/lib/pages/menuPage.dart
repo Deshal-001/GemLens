@@ -103,24 +103,14 @@ class _MenuPageState extends State<MenuPage> {
                     ),
                   ),
             
-                  Padding(
-            padding: const EdgeInsets.only(bottom: 15),
-                    child: MenuButton(
-                      text: "Settings",
-                      onTap: () {
-                        widget.onMenuTap(5); // 5 is the index of ScanImagePage in the _children list
-                      },
-                      icon: Icons.settings,
-                      color: primaryColor, // Changed button color to blue
-                    ),
-                  ),
-                  // Repeat for other MenuButton widgets
-                ],
-              ),
-            ),
+                 
           ],
-        ),
+        
       ),
+    ),
+    ],
+    ),
+    ),
     );
   }
 }

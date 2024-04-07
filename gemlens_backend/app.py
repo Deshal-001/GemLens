@@ -17,7 +17,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Load the ONNX model
-ort_session = InferenceSession('/Users/kavindudeshalsilva/Documents/GitHub/GemLens/gemlens_backend/onnx_model.onnx')
+ort_session = InferenceSession('../gemlens_backend/onnx_model.onnx')
 
 @app.route('/predict', methods=['POST'])
 def predict():
@@ -54,26 +54,6 @@ def predict():
     return Response(img_bytes, mimetype='image/png')
 
 
-    return jsonify({'predicted_class': predicted_class})
-
-@app.route('/dominant_color', methods=['POST'])
-def dominant_color():
-    img = request.files['image']
-    img = Image.open(io.BytesIO(img.read())).convert('RGB').resize((224, 224))  # Convert FileStorage to BytesIO and remove alpha channel
-
-    # Reshape the image to be a list of RGB pixels
-    img_pixels = np.array(img).reshape(-1, 3)
-
-    # Use KMeans to find the most common color
-    kmeans = KMeans(n_clusters=1)
-    kmeans.fit(img_pixels)
-    dominant_color = kmeans.cluster_centers_[0]
-
-    # Convert the dominant color to hexadecimal
-    dominant_color_hex = rgb2hex(dominant_color[0], dominant_color[1], dominant_color[2])
-
-    return jsonify(dominant_color_hex)
-
 
 @app.route('/predict_class', methods=['POST'])
 def predict_class():
@@ -90,26 +70,6 @@ def predict_class():
 
     return jsonify(predicted_class)
 
-
-@app.route('/predict_probabilities', methods=['POST'])
-def predict_probabilities():
-    img = request.files['image']
-    img = Image.open(io.BytesIO(img.read())).convert('RGB').resize((224, 224))  # Convert FileStorage to BytesIO and remove alpha channel
-    x = image.img_to_array(img)
-    x = np.expand_dims(x, axis=0)
-    x = x/255.0
-
-    # Make prediction
-    input_name = ort_session.get_inputs()[0].name
-    classes = ort_session.run(None, {input_name: x})[0]
-
-    # Convert numpy array to list
-    probabilities = classes.tolist()[0]
-
-    # Convert probabilities to percentages
-    probabilities = [prob * 100 for prob in probabilities]
-
-    return jsonify(probabilities)
 
 @app.route('/image_analysis', methods=['POST'])
 def image_analysis():

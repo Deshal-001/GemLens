@@ -69,7 +69,7 @@ final detailsSections = [
         style: GoogleFonts.dmSerifDisplay(
           fontSize: 20,
           fontWeight: FontWeight.bold,
-          color: Color.fromRGBO(216, 23, 23, 0.78),
+          color: primaryColor,
         ),
       ),
     ),
@@ -109,7 +109,7 @@ final detailsSections = [
       elevation: 2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: ExpansionTile(
-        title: Text(section['header'], style: GoogleFonts.nunitoSans(fontSize: 18, fontWeight: FontWeight.bold)),
+        title: Text(section['header'], style: GoogleFonts.nunitoSans(fontSize: 18, fontWeight: FontWeight.bold, color: theme.primaryColor)),
         children: section['attributes'].map<Widget>((attribute) {
           var entry = attribute.entries.first;
           return ListTile(

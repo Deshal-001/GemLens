@@ -5,7 +5,6 @@ import 'package:gemlens_frontend/pages/helpAndSupportPage.dart';
 import 'package:gemlens_frontend/pages/landingPage.dart';
 import 'package:gemlens_frontend/pages/menuPage.dart';
 import 'package:gemlens_frontend/pages/scanGemStonePage.dart';
-import 'package:gemlens_frontend/pages/settingsPage.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class MainPage extends StatefulWidget {
@@ -26,9 +25,7 @@ class _MainPageState extends State<MainPage> {
     _children.add(ScanImagePage());
     _children.add(GemStoneSearchPage());
         _children.add(HelpAndSupportPage());
-
     _children.add(AboutPage());
-    _children.add(SettingsPage());
   }
 
   void onTabTapped(int index) {
