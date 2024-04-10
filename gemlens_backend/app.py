@@ -17,12 +17,15 @@ app = Flask(__name__)
 CORS(app)
 
 # Load the ONNX model
-ort_session = InferenceSession('../gemlens_backend/onnx_model.onnx')
+#ort_session = InferenceSession('../gemlens_backend/onnx_model.onnx')
+
+ort_session = InferenceSession('../gemlens_backend/model_checkpoint_onnx_model.onnx')
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
     img = request.files['image']
-    img = Image.open(io.BytesIO(img.read())).convert('RGB').resize((224, 224))  # Convert FileStorage to BytesIO and remove alpha channel
+    img = Image.open(io.BytesIO(img.read())).convert('RGB').resize((224, 224))  
     x = image.img_to_array(img)
     x = np.expand_dims(x, axis=0)
     x = x/255.0
@@ -74,7 +77,7 @@ def predict_class():
 @app.route('/image_analysis', methods=['POST'])
 def image_analysis():
     img = request.files['image']
-    img = Image.open(io.BytesIO(img.read())).convert('RGB').resize((224, 224))  # Convert FileStorage to BytesIO and remove alpha channel
+    img = Image.open(io.BytesIO(img.read())).convert('RGB').resize((224, 224)) 
 
     # Reshape the image to be a list of RGB pixels
     img_pixels = np.array(img).reshape(-1, 3)
