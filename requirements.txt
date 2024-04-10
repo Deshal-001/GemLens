@@ -1,2 +1,12 @@
 Flask
 Gunicorn
+Flask
+Gunicorn
+tensorflow  # This is for keras.preprocessing
+lime  # This is for lime.lime_image
+scikit-image  # This package is required for skimage.segmentation.mark_boundaries
+numpy
+onnxruntime
+Pillow  # This is for PIL.Image
+scikit-learn  # This package is required for sklearn.cluster.KMeans
+flask-cors  # This is for flask_cors.CORS
