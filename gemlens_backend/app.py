@@ -9,6 +9,7 @@ import io
 from sklearn.cluster import KMeans
 from flask import Flask, jsonify, request , Response
 from flask_cors import CORS
+import os
 
 def rgb2hex(r, g, b):
     return "#{:02x}{:02x}{:02x}".format(int(r), int(g), int(b))
@@ -19,7 +20,12 @@ CORS(app)
 # Load the ONNX model
 #ort_session = InferenceSession('../gemlens_backend/onnx_model.onnx')
 
-ort_session = InferenceSession('../gemlens_backend/model_checkpoint_onnx_model.onnx')
+# Construct an absolute path to the model file
+base_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(base_dir, 'model_checkpoint_onnx_model.onnx')
+
+# Use the absolute path for the InferenceSession
+ort_session = InferenceSession(model_path)
 
 
 @app.route('/predict', methods=['POST'])
